@@ -20,7 +20,7 @@ The most powerful credential & information stealing tool written in <a href="htt
 Created and maintained by <a href="https://discord.com/users/900072916597735444">yahweh#7023</a>
     <br />
     <br />
-    <a href="https://github.com/codeuk/klimt">View Demo</a>
+    <a href="https://github.com/codeuk/klimt#features">View Features</a>
     ·
     <a href="https://github.com/codeuk/klimt/issues">Report Bug</a>
     ·

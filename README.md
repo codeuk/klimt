@@ -1,4 +1,4 @@
-**PUBLIC VERSION WILL BE RELEASED AT 10 STARS!**
+**SOURCE CODE WILL BE RELEASED AT 10 STARS!**
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]

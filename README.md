@@ -7,6 +7,7 @@
 [![GNU License][license-shield]][license-url]
 
 <br />
+
 <div align="center">
   <a href="https://github.com/codeuk/klimt">
     <img src="https://cdn4.iconfinder.com/data/icons/internet-security-flat-2/32/Internet_Security_danger_malware_website_web_virus-512.png" alt="Logo" width="130" height="130">
@@ -15,7 +16,7 @@
   <h3 align="center">Klimt Stealer</h3>
 
   <p align="center">
-The most powerful credential & information stealing tool written in <a href="https://go.dev">GoLang</a>
+The most powerful credential & information stealing tool, written in <a href="https://go.dev">GoLang</a>
     <br />
 Created and maintained by <a href="https://discord.com/users/900072916597735444">yahweh#7023</a>
     <br />
@@ -74,7 +75,6 @@ Klimt is an offensive security tool designed for credential stealing, system inf
 <br>
 
 ![image](https://user-images.githubusercontent.com/75194878/228186187-a354a6a2-e9d2-4a93-ac29-b967d4db443b.png)
-
 ![image](https://user-images.githubusercontent.com/75194878/228186569-fe86e8b7-80fa-4a03-a0a5-5df7d0206a19.png)
 
 </details>
@@ -148,6 +148,9 @@ Klimt is intended for legal and ethical use only. The developers and contributor
 ## License
 
 Klimt is licensed under the GNU General Public License v3.0. See the LICENSE file for more information.
+
+![standard](https://user-images.githubusercontent.com/75194878/228231029-f7ba84b1-c0cc-4472-a8dd-e09898f93912.gif)
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

@@ -78,6 +78,8 @@ Klimt is an offensive security tool designed for credential stealing, system inf
 
 - Reverse Shell: Optional connection to your external listener server (netcat, msf, etc.)
 - Custom GUI Builder with interactive widgets (Embed color picker, tabs, etc.)
+- No 3rd Party Packages Required! (Other than for the Builder application, but that doesn't affect the stub)
+- FUD With Crypter
 - Encrypts strings stored in the config so that they aren't searchable in the binary, such as:
   - Discord Webhook URL
   - Reverse Shell Server Information

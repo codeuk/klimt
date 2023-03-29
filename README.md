@@ -92,8 +92,7 @@ Klimt is an offensive security tool designed for credential stealing, system inf
 ## Builder Showcase
 *Layout and theme of the builder may change in the future*
 
-![BUILDER](https://user-images.githubusercontent.com/75194878/228554304-e88ba688-a1d2-4042-bd78-e8bf8b1f224f.png)
-![EMBEDPICKER](https://user-images.githubusercontent.com/75194878/228554522-0a717830-1ff3-4112-b1e1-e56a5600774c.png)
+![BUILDER](https://user-images.githubusercontent.com/75194878/228554304-e88ba688-a1d2-4042-bd78-e8bf8b1f224f.png)![EMBEDPICKER](https://user-images.githubusercontent.com/75194878/228554522-0a717830-1ff3-4112-b1e1-e56a5600774c.png)
 
 ## Installation
 

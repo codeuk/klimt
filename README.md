@@ -110,6 +110,8 @@ To install Klimt, make sure you have [GoLang](https://go.dev) installed and foll
 3. Download all pre-requisites by running `install.bat`
 4. Build the builder using `go build builder.go` or by running `build.bat`
 
+If you encounter any errors during this process, first look it up and see if it's an easy fix, and if you still cannot manage to get it working, create an <a href="https://github.com/codeuk/klimt/issues">issue</a>
+
 ## Usage
 
 To use the Klimt Builder, follow these steps:

@@ -72,6 +72,7 @@ Klimt is an offensive security tool designed for credential stealing, system inf
 - Local Files: Scans the target machines files.
 - Installed Software: Collects information on installed software.
 - Network Connections: Logs network activity and connections.
+- 💎 WiFi/SSID Credentials: Steals login credentials and SSID information from all available WiFi connections.
 
 </details>
 

@@ -106,8 +106,8 @@ To install Klimt, make sure you have [GoLang](https://go.dev) installed and foll
 
 1. Clone the repository using `git clone https://github.com/codeuk/klimt.git`
 2. Open a terminal and navigate to the directory you installed Klimt in.
-3. Install the required dependencies using `go get ./...`
-4. Build the builder using `go build builder.go` or by opening the `build.bat` file if you're on Windows.
+3. Download all pre-requisites by running `install.bat`
+4. Build the builder using `go build builder.go` or by running `build.bat`
 
 ## Usage
 

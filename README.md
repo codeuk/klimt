@@ -103,7 +103,7 @@ Klimt is an offensive security tool designed for credential stealing, system inf
 
 ## Installation
 
-To install Klimt, make sure you have [GoLang](https://go.dev) installed and follow these steps:
+To install Klimt, make sure you have [GoLang](https://go.dev) and [GCC](https://sourceforge.net/projects/mingw-w64/) installed (this will require a brain) and follow these steps:
 
 1. Clone the repository using `git clone https://github.com/codeuk/klimt.git`
 2. Open a terminal and navigate to the directory you installed Klimt in.

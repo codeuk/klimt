@@ -1,6 +1,4 @@
-**SOURCE CODE WILL BE RELEASED AT 10 STARS!**
-
-**You can private message me (<a href="https://discord.com/users/900072916597735444">yahweh#7023</a>) to inquire about purchasing the Pro Version and it's source code for a seperate fee.**
+**You can private message me (<a href="https://discord.com/users/900072916597735444">yahweh#7023</a>) to purchase Pro Version.**
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -116,6 +114,8 @@ To use the Klimt Builder, follow these steps:
 1. In the Klimt directory, run `builder` or open the new `builder.exe` file to open the Klimt Stealer Builder.
 2. Wait a few seconds, and when the builder GUI opens, configure it how you wish and press `Compile Stealer`.
 3. If the build is successful, the executable should be in `build/agent.exe`, and can now use this stub as you wish.
+
+The stealer build is approx. 4MB (UPX'd) and so far FUD (0 detections with the Pro Version, at least.), though I'd still recommend using a dropper when putting it to operational use.
 
 ## Disclaimer
 

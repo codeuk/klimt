@@ -1,6 +1,6 @@
 **SOURCE CODE HAS BEEN RELEASED!**
 
-**You can private message me (<a href="https://discord.com/users/900072916597735444">yahweh#7023</a>) to inquire about purchasing the Pro Version and it's source code for a seperate fee.**
+**You can private message me (<a href="https://discord.com/users/900072916597735444">yahweh#7023</a>) to inquire about purchasing the Pro Version.**
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]

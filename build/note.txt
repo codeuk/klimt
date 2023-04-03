@@ -1,0 +1,6 @@
+We recommend using UPX to compress the build file (agent.exe), so we have left the UPX binary in this directory.
+
+Usage (in the command-line): `upx agent.exe` (without the `)
+
+If you don't trust the binary source, you can download it directly from the UPX GitHub page:
+https://github.com/upx/upx/releases/latest

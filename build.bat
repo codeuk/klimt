@@ -1,0 +1,3 @@
+@echo off
+go get ./...
+go build builder.go

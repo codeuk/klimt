@@ -1,6 +1,4 @@
-**SOURCE CODE HAS BEEN RELEASED!**
-
-**You can private message me (<a href="https://discord.com/users/900072916597735444">yahweh#7023</a>) to inquire about purchasing the Pro Version.**
+**Join the Klimt Stealer <a href="https://discord.gg/GMPfKuR3Tn">Discord</a>! (Pro Version, Support, etc.)**
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]

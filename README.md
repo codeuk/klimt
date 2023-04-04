@@ -27,7 +27,7 @@ Created and maintained by <a href="https://discord.com/users/900072916597735444"
     ·
     <a href="https://github.com/codeuk/klimt#embed-showcase">Embed Showcase</a>
     ·
-    <a href="https://github.com/codeuk/klimt/issues">Request Feature</a>
+    <a href="https://github.com/codeuk/klimt#installation">Installing/Usage</a>
   </p>
 </div>
 <br />

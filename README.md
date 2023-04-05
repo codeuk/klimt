@@ -1,8 +1,6 @@
 **RELEASING BROWSER PASSWORD STEALER AT 25 STARS!**
 
-*The Discord server has been disabled*
-
-~~**Join the Klimt Stealer <a href="https://discord.gg/GMPfKuR3Tn">Discord</a>! (Pro Version, Support, etc.)**~~
+**Join the Klimt Stealer <a href="https://discord.gg/GBjpS3ENGK">Discord</a>! (Pro Version, Support, etc.)**
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]

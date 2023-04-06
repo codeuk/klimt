@@ -1,6 +1,6 @@
 **RELEASING BROWSER PASSWORD STEALER AT 25 STARS!**
 
-**Join the Klimt Stealer <a href="https://discord.gg/GBjpS3ENGK">Discord</a>! (Pro Version, Support, etc.)**
+**Use the **
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -20,7 +20,7 @@
   <p align="center">
 The most powerful credential & information stealing tool, written in <a href="https://go.dev">GoLang</a>
     <br />
-Created and maintained by <a href="https://discord.com/users/900072916597735444">yahweh#7023</a>
+Created and maintained by <a href="https://discord.com/users/809530074402390076">random-user#0001</a>
     <br />
     <br />
     <a href="https://github.com/codeuk/klimt#features">View Features</a>

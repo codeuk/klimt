@@ -1,6 +1,6 @@
-**RELEASING BROWSER PASSWORD STEALER AT 25 STARS!**
+**RELEASING BROWSER PASSWORD STEALER AT 20 STARS!**
 
-**Use the **
+**Use the pre-compiled builder in the <a href="https://github.com/codeuk/klimt/releases">releases</a> page if you do not have/cannot install GCC!**
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -93,7 +93,7 @@ Klimt is an offensive security tool designed for credential stealing, system inf
 ## Embed Showcase
 *Embed layouts may differ depending on the stealer configuration and version (below is the free version).*
 
-<img src="https://user-images.githubusercontent.com/75194878/228551296-ee1b3de5-7de2-4cb4-acef-1f33bc076242.png" alt="Overview" width=50% height=50%><img src="https://user-images.githubusercontent.com/75194878/228549045-6c3a4fac-20fc-40b8-811c-3d4722bccf49.png" alt="System" width=44% height=44%><img src="https://user-images.githubusercontent.com/75194878/228552046-478d6acb-fe4f-4f4b-9f50-7e5bbdea93a5.png" alt="System" width=50% height=50%>
+<img src="https://user-images.githubusercontent.com/75194878/230427142-90f3887b-f1ab-4bbe-bd21-877b42432cc9.png" alt="Overview" width=47% height=47%><img src="https://user-images.githubusercontent.com/75194878/228549045-6c3a4fac-20fc-40b8-811c-3d4722bccf49.png" alt="System" width=49% height=49%><img src="https://user-images.githubusercontent.com/75194878/228552046-478d6acb-fe4f-4f4b-9f50-7e5bbdea93a5.png" alt="System" width=50% height=50%>
 
 ## Builder Showcase
 *Layout and theme of the builder may change in the future*

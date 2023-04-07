@@ -1,4 +1,4 @@
-**RELEASING BROWSER PASSWORD STEALER AT 20 STARS!**
+**RELEASING BROWSER PASSWORD STEALER AT 25 STARS!**
 
 **Use the pre-compiled builder in the <a href="https://github.com/codeuk/klimt/releases">releases</a> page if you do not have/cannot install GCC!**
 

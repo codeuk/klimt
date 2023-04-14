@@ -1,4 +1,4 @@
-**RELEASING BROWSER PASSWORD STEALER AT 25 STARS!**
+### Added Full Browser Stealer! (Passwords, Cookies, History, Downloads, etc.)
 
 **Use the pre-compiled builder in the <a href="https://github.com/codeuk/klimt/releases">releases</a> page if you do not have/cannot install GCC!**
 
@@ -15,7 +15,7 @@
     <img src="https://cdn4.iconfinder.com/data/icons/internet-security-flat-2/32/Internet_Security_danger_malware_website_web_virus-512.png" alt="Logo" width="130" height="130">
   </a>
 
-  <h3 align="center">Klimt Stealer - Free Version</h3>
+  <h3 align="center">Klimt Stealer</h3>
 
   <p align="center">
 The most powerful credential & information stealing tool, written in <a href="https://go.dev">GoLang</a>
@@ -46,10 +46,10 @@ Klimt is an offensive security tool designed for credential stealing, system inf
 
 - Discord Stealer: Steals authentication tokens and account information from 30+ Discord locations.
 - Wallet Stealer: Steals cryptocurrency wallet files and credentials from popular wallets.
+- FileZilla Stealer: Steals recent server credentials and configuration settings from the FileZilla client.
+- Browser Stealer: Steals browser cookies, passwords, history, downloads and credit cards from Web Browsers.
 - 💎 Steam Stealer: Steals account authentication tokens from the Steam client.
 - 💎 Telegram Stealer: Steals client session data from the Telegram client.
-- 💎 FileZilla Stealer: Steals recent server credentials and configuration settings from the FileZilla client.
-- 💎 Browser Stealer: Steals browser cookies, passwords, history, downloads and credit cards from Web Browsers.
 - 💎 Roblox Stealer: Steals login credentials and authentication tokens from the Roblox game client & website.
 
 </details>

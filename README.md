@@ -40,7 +40,7 @@ Klimt is an offensive security tool designed for credential stealing, system inf
 ## Features
 *Features with the 💎 emoji before them are held for the private/professional version only*
 
-<details open>
+<details>
 <summary><strong>Credential Stealing</strong></summary>
 <br>
 
@@ -54,7 +54,7 @@ Klimt is an offensive security tool designed for credential stealing, system inf
 
 </details>
 
-<details open>
+<details>
 <summary><strong>Program Injection</strong></summary>
 <br>
 
@@ -64,7 +64,7 @@ Klimt is an offensive security tool designed for credential stealing, system inf
 
 </details>
 
-<details open>
+<details>
 <summary><strong>System Information</strong></summary>
 <br>
 

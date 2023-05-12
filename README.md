@@ -35,7 +35,7 @@ Created and maintained by <a href="https://discord.com/users/809530074402390076"
 # About This Project
 Klimt is an offensive security tool designed for credential stealing, system information analysis and security assessments. It features a range of options for compromising different types of systems and applications, including Discord, Various CryptoCurrency Wallets, Web Browsers, Roblox, and [many more](https://github.com/codeuk/klimt#features). Klimt also includes a persistent reverse shell option that allows users to execute commands from a remote server, along with an interactive GUI builder.
 
--- 2nd Note: **When using this program, do not upload the stub (build/agent.exe) to any virus scanning platforms (ex. VirusTotal) as this will only increase detections in the future.**
+Note: **When using this program, do not upload the stub (build/agent.exe) to any virus scanning platforms (ex. VirusTotal) as this will only increase detections in the future.**
 
 ## Features
 *Features with the 💎 emoji before them are held for the private/professional version only*

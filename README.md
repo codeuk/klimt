@@ -20,7 +20,7 @@
   <p align="center">
 The most powerful credential & information stealing tool, written in <a href="https://go.dev">GoLang</a>
     <br />
-Created and maintained by <a href="https://discord.com/users/809530074402390076">random-user#0001</a>
+Created and maintained by <a href="https://discord.com/users/1051286621414244372">codeuk</a>
     <br />
     <br />
     <a href="https://github.com/codeuk/klimt#features">View Features</a>

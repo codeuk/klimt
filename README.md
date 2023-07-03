@@ -1,21 +1,26 @@
-### Added Full Browser Stealer! (Passwords, Cookies, History, Downloads, etc.)
-
-**Use the pre-compiled builder in the <a href="https://github.com/codeuk/klimt/releases">releases</a> page if you do not have/cannot install GCC!**
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![GNU License][license-shield]][license-url]
-
-<br />
-
 <div align="center">
   <a href="https://github.com/codeuk/klimt">
     <img src="https://cdn4.iconfinder.com/data/icons/internet-security-flat-2/32/Internet_Security_danger_malware_website_web_virus-512.png" alt="Logo" width="130" height="130">
   </a>
 
-  <h3 align="center">Klimt Stealer</h3>
+<h1 align="center">Klimt Stealer</h3>
+  <p align="center">
+  <a href="https://github.com/codeuk/klimt/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/codeuk/klimt.svg?style=flat-square">
+  </a>
+  <a href="https://github.com/codeuk/klimt/releases">
+    <img src="https://img.shields.io/badge/release-v0.1 alpha-blue.svg?style=flat-square">
+  </a>
+  <a href="https://github.com/codeuk/klimt/blob/master/LICENSE.txt">
+    <img src="https://img.shields.io/badge/license-GNU%20v3-yellow.svg?style=flat-square">
+  </a>
+  <a href="https://github.com/codeuk/klimt/stargazers">
+    <img src="https://img.shields.io/github/stars/codeuk/klimt">
+  </a>
+  <a href="https://opensource.org">
+    <img src="https://img.shields.io/badge/open%20source-%E2%9D%A4-brightgreen.svg?style=flat-square">
+  </a>
+  </p>
 
   <p align="center">
 The most powerful credential & information stealing tool, written in <a href="https://go.dev">GoLang</a>
